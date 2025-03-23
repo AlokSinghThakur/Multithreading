@@ -62,3 +62,6 @@ public class MyThread extends Thread {
         h.start();
     }
 }
+
+//  to run on single core process
+// start /affinity 1 java MyThread.java
