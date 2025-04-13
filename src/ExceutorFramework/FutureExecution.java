@@ -25,7 +25,7 @@ public class FutureExecution {
 //        Thread.sleep(1);
 //        System.out.println(executorService.isTerminated());
 
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
 
         Callable<Integer> callable1 = () -> {
             Thread.sleep(1000);
@@ -46,6 +46,17 @@ public class FutureExecution {
         };
 
         List<Callable<Integer>> list = Arrays.asList(callable1, callable2, callable3);
+//Invoke Any
+        try {
+            Integer i = executorService.invokeAny(list);
+            System.out.println(i);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+
+
 //Invoke All
 //        List<Future<Integer>> futures = null;
 //        try {
