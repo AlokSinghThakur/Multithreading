@@ -11,6 +11,7 @@ public class Main {
 //        Thread[] threads = new Thread[9];
         for (int i = 1; i < 10; i++) {
             int finalI = i;
+
             executor.submit(() -> {
                 long result = factorial(finalI);
                 System.out.println(result);
